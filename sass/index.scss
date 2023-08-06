@@ -1,0 +1,158 @@
+//body {
+    //background-color: palegreen;
+    //font-size: 18px;
+  //  margin: 0;
+//}
+@import 'variable';
+@import 'buttons';
+@import 'colors';
+
+
+
+// Nested Rules
+
+nav {
+    background-color: #222;
+    padding: 10px;
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 10px;
+        color: #fff;
+        &:last-child {
+            color: #ffd000;
+        }
+        &:nth-child(2) {
+            color: #11aeec;
+        }
+        &:hover {
+            color: #a7e007;
+        }
+    }
+}
+
+p {
+    line-height: 30px;
+    text-indent: 30px;
+    font-size: $font-size-md;
+   a {
+      text-decoration: none;
+      color: tomato;
+   }
+
+}
+
+
+
+body {
+    font-family: $font-family;
+}
+
+h2 {
+    color: map-get($colors, "success");
+    font-size: 20px + 5;
+}
+
+//p {
+  //  color: maroon;
+//}
+
+
+//if else
+
+$bg-color: #222;
+$text-color: #222;
+$width: 290px;
+$height: 3000px;
+$is-div: true;
+
+.box-if {
+    width: $width;
+    height: $height;
+   // background-color: $bg-color;
+    padding: 10px;
+    @if ($bg-color==$text-color) {
+        color: #fff;
+    }
+    @else {
+       color: #3ad40b 
+    }
+    @if ($width>=600px) {
+        color: #ffd000;
+    }
+    @if ($width<=300px) {
+        color: #11aeec;
+    }
+    @if ($width>=300px and $height>=300px) {
+        background-color: #13011a;
+    } @else {
+        background-color: palegreen;
+    }
+    @if ($width>=300px or $height>=300px) {
+        border-radius: 35px;
+    } @else {
+        border-radius: 15px;
+    }
+
+    @if not $is-div{
+        display: none;
+    }
+}
+
+@function px_to_rem($px) {
+    @return calc($px/16) + rem;
+}
+
+
+
+@mixin text-style {
+    font-family: Arial;
+    font-size: px_to_rem(32);
+    line-height: 1.5;
+    color: #333;
+}
+.title {
+    @include text-style;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.para {
+    @include text-style;
+    font-style: italic;
+    text-align: justify;
+}
+
+@import 'utilites';
+
+
+%extend-border {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+    font-size: 1em;
+}
+
+
+.border {
+    @extend %extend-border;
+}
+
+
+/*
+// Relational Operator
+
+Equality: ==
+Ineequality: !=
+Greater than: >
+Greater than or equal to: >=
+Less than: <
+Less than or equal to: <=
+
+//logical operator
+and
+or
+not
+*/
+
+
